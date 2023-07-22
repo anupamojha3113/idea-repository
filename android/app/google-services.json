@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "514568740949",
+    "project_id": "idea-book-e7278",
+    "storage_bucket": "idea-book-e7278.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514568740949:android:427d03863ec1698c9374dc",
+        "android_client_info": {
+          "package_name": "com.example.idea_book"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "514568740949-amrafi8k4csos67r8sf5umforheouanq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0CExKypTP80to1JMV9e4hXQ-UK3SBSAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "514568740949-amrafi8k4csos67r8sf5umforheouanq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,41 @@
+name: CI/CD Digital Ocean Server
+
+on:
+  push:
+    branches: [deploy]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Go
+        uses: actions/setup-go@v3.3.0
+        with:
+          go-version: 1.17
+
+      - name: Build go binary
+        run: cd server && go build -o main .
+
+      - name: Upload to Digital Ocean
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{secrets.SSH_HOST_PROD}}
+          key: ${{secrets.SSH_KEY}}
+          username: ${{ secrets.SSH_USERNAME }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          source: "cd server && ./main"
+          target: "/go-web/"
+
+      - name: Restart Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{secrets.SSH_HOST_PROD}}
+          key: ${{secrets.SSH_KEY}}
+          username: ${{ secrets.SSH_USERNAME }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          script: |
+            sudo systemctl restart goweb
+            sudo systemctl restart nginx
